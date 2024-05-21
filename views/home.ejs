@@ -1,4 +1,10 @@
 <% layout('./layouts/boilerplate') %>
 
-<h1>Home | CampGuide</h1>
-<a href="/campgrounds">All Campgrounds</a>
+<div class="text-center">
+  <% if(currentUser) { %>
+    <h1 class="display-1">Hi, <span class="text-primary"><%= currentUser.username %>!</span></h1>
+  <% } else { %>
+    <h1 class="display-1">Hi, <span class="text-primary">Guest!</span></h1>
+  <% } %>
+  <p class="lead">Welcome to CampGuide!</p>
+</div>
