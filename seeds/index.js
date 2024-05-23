@@ -9,6 +9,7 @@ const User = require('../models/user');
 const { places, descriptors } = require('./seedHelpers');
 const cities = require('./cities');
 const { imageUpload } = require('../cloudinary');
+const { getGeoJSON } = require('../mapbox');
 
 const sample = array => array[Math.floor(Math.random() * array.length)];
 
@@ -31,11 +32,13 @@ const seedDB = async () => {
 
   for(let i = 0; i < 10; ++i) {
     const randomCityIndex = Math.floor(Math.random() * 1000);
+    const loc = `${cities[randomCityIndex].city}, ${cities[randomCityIndex].state}`;
     const price = Math.floor(Math.random() * 20) + 10;
     const file1 = await imageUpload('https://source.unsplash.com/collection/483251/1920x1080', 'CampGuide');
     const file2 = await imageUpload('https://source.unsplash.com/random/1920x1080', 'CampGuide');
     const camp = new Campground({
-      location: `${cities[randomCityIndex].city}, ${cities[randomCityIndex].state}`,
+      location: loc,
+      geometry: await getGeoJSON(loc),
       title: `${sample(descriptors)} ${sample(places)}`,
       images: [
         {
