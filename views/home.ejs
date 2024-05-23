@@ -1,10 +1,71 @@
-<% layout('./layouts/boilerplate') %>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="text-center">
-  <% if(currentUser) { %>
-    <h1 class="display-1">Hi, <span class="text-primary"><%= currentUser.username %>!</span></h1>
-  <% } else { %>
-    <h1 class="display-1">Hi, <span class="text-primary">Guest!</span></h1>
-  <% } %>
-  <p class="lead">Welcome to CampGuide!</p>
-</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+  crossorigin="anonymous"
+  >
+  <link rel="stylesheet" href="/styles/home.css">
+  <title>Home | CampGuide</title>
+</head>
+
+<body class="container d-flex text-white bg-dark">
+
+  <div class="text-center cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <div class="d-md-flex">
+        <h3 class="float-md-left mb-0 me-auto">CampGuide</h3>
+        <nav class="nav nav-masthead justify-content-center fload-md-right">
+          <a href="/" class="nav-link active">Home</a>
+          <a href="/campgrounds" class="nav-link">Campgrounds</a>
+          <% if(!currentUser) { %>
+            <a href="/login" class="nav-link">Login</a>
+          <% } else { %>
+            <a href="/logout" class="nav-link">Logout</a>
+          <% } %>
+        </nav>
+      </div>
+    </header>
+
+    <main class="row text-start">
+      <div class="col-lg-6 offset-lg-1 col-md-6 col-12">
+        <h1 class="text-primary display-1 mb-sm-5">CampGuide</h1>
+        <p class="display-6">Welcome to CampGuide, <span class="text-primary"><%= currentUser ? currentUser.username : 'guest' %></span>!<p>
+        <p class="">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit fugiat officiis aspernatur omnis ex natus nihil dolore illum vel molestias atque ratione possimus quasi est, perferendis nesciunt eligendi, placeat similique soluta nulla. Excepturi quis sapiente expedita ducimus dignissimos incidunt dolorum perferendis dolore tempora animi. Autem error fugit assumenda odit eveniet.</p>
+        <% if(!currentUser) { %>
+          <a href="/register" class="btn btn-large btn-primary mb-3 font-weight-bold text-white">Get started by registering</a>
+        <% } %>
+        <a href="/campgrounds" class="btn btn-large btn-outline-primary mb-3 font-weight-bold text-white">View campgrounds</a>
+      </div>
+
+      <div class="col-lg-4 col-md-6 d-none d-md-flex align-items-center">
+        <img class="img-fluid" src="/images/icon.png" alt="Icon">
+      </div>
+    </main>
+
+    <footer class="footer py-3 mt-auto text-white-50">
+      &copy; CampGuide 2024
+    </footer>
+  </div>
+
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"
+  ></script>
+</body>
+
+</html>

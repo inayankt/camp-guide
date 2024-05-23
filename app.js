@@ -52,6 +52,7 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
+  res.locals.docTitle = 'Page';
   next();
 });
 
@@ -74,7 +75,7 @@ app.use((err, req, res, next) => {
   if(!err.message) {
     err.message = 'Aw snap! Something went wrong!'
   }
-  res.status(statusCode).render('error', { err });
+  res.status(statusCode).render('error', { err, docTitle: 'Error' });
 });
 
 app.listen(port, () => {

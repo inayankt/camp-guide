@@ -4,11 +4,11 @@ const { getGeoJSON } = require('../mapbox');
 
 module.exports.allCampgrounds = async (req, res) => {
   const campgrounds = await Campground.find({});
-  res.render('campgrounds/index', { campgrounds });
+  res.render('campgrounds/index', { campgrounds, docTitle: 'All Campgrounds' });
 };
 
 module.exports.renderNewForm = (req, res) => {
-  res.render('campgrounds/new');
+  res.render('campgrounds/new', { docTitle: 'Register new Campground' });
 };
 
 module.exports.registerCampground = async (req, res) => {
@@ -32,7 +32,7 @@ module.exports.showCampground = async (req, res) => {
     req.flash('error', 'Requested campground not available.');
     return res.redirect('/campgrounds');
   }
-  res.render('campgrounds/show', { campground });
+  res.render('campgrounds/show', { campground, docTitle: campground.title });
 };
 
 module.exports.renderEditForm = async (req, res) => {
@@ -41,7 +41,7 @@ module.exports.renderEditForm = async (req, res) => {
     req.flash('error', 'Requested campground not available.');
     return res.redirect('/campgrounds');
   }
-  res.render('campgrounds/edit', { campground });
+  res.render('campgrounds/edit', { campground, docTitle: `Edit ${campground.title}` });
 };
 
 module.exports.editCampground = async (req, res) => {

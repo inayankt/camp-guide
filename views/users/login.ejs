@@ -2,26 +2,31 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-3 col-10 offset-1">
-    <h1 class="text-center">Login</h1>
-    <form action="/login" method="post" class="validated-form" novalidate>
-      <div class="mb-3">
-        <label class="form-label" for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username" required>
-        <div class="invalid-feedback">
-          <small>Please provide a valid username.</small>
-        </div>
+    <div class="card shadow-lg">
+      <img src="/images/campground-default.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Login</h5>
+        <form action="/login" method="post" class="validated-form" novalidate>
+          <div class="mb-3">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" type="text" id="username" name="username" required>
+            <div class="invalid-feedback">
+              <small>Please provide a valid username.</small>
+            </div>
+          </div>
+    
+          <div class="mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" id="password" name="password" required>
+            <div class="invalid-feedback">
+              <small>Please provide a valid password.</small>
+            </div>
+          </div>
+          
+          <small class="mb-3 d-block">Not registered yet? <a href="/register">Register now</a></small>
+          <button class="btn btn-primary">Login</button>
+        </form>
       </div>
-
-      <div class="mb-3">
-        <label class="form-label" for="password">Password</label>
-        <input class="form-control" type="password" id="password" name="password" required>
-        <div class="invalid-feedback">
-          <small>Please provide a valid password.</small>
-        </div>
-      </div>
-      
-      <small class="mb-3 d-block">Not registered yet? <a href="/register">Register now</a></small>
-      <button class="btn btn-primary">Login</button>
-    </form>
+    </div>
   </div>
 </div>
