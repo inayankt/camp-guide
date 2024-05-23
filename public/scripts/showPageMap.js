@@ -16,7 +16,7 @@ const mapStyles = {
 
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/standard',
+  style: 'mapbox://styles/mapbox/dark-v11',
   center: loc,
   zoom: 9,
 });
@@ -26,7 +26,7 @@ const marker = new mapboxgl.Marker()
   .setPopup(
     new mapboxgl.Popup({ offset: 25 })
     .setHTML(
-      `<h5>${campground.title}</h5><p>${campground.location}</p>`
+      `<p><strong>${campground.title}</strong><br>${campground.location}</p>`
     )
   )
   .addTo(map);
