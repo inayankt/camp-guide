@@ -4,16 +4,38 @@
 
   <div class="col-lg-6 col-md-8 offset-md-0 col-10 offset-1">
     <div class="card mb-5">
-      <img src="<%= campground.image %>" class="card-img-top" alt="<%= campground.title %>">
+      
+      <div id="campgroundCarouselAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% campground.images.forEach((img, i) => { %>
+            <div class="carousel-item <%= i === 0 && 'active' %>">
+              <img src="<%= img.url %>" class="d-block w-100" alt="<%= img.filename %>">
+            </div>
+          <% }) %>
+        </div>
+        <% if(campground.images.length > 1) { %>
+          <button class="carousel-control-prev" type="button" data-bs-target="#campgroundCarouselAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#campgroundCarouselAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        <% } %>
+      </div>
+
       <div class="card-body">
         <h5 class="card-title"><%= campground.title %></h5>
         <p class="card-text"><%= campground.description %></p>
       </div>
+
       <ul class="list-group list-group-flush">
         <li class="list-group-item text-muted"><%= campground.location %></li>
         <li class="list-group-item">$ <%= campground.price %> / night</li>
         <li class="list-group-item"><span class="text-muted">Registered by: </span><%= campground.author.username %></li>
       </ul>
+
       <% if(currentUser && campground.author.equals(currentUser._id)) { %>
         <div class="card-body">
           <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-sm btn-primary">Edit</a>
@@ -22,6 +44,7 @@
           </form>
         </div>
       <% } %>
+      
       <div class="card-footer">
         <a href="/campgrounds">All Campgrounds</a>
       </div>

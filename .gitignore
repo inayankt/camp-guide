@@ -3,3 +3,6 @@ node_modules/
 
 # VS Code files
 .vscode/
+
+# Environment variable files
+.env
