@@ -5,7 +5,7 @@ mapboxgl.accessToken = mbxToken;
 const map = new mapboxgl.Map({
     container: 'clusterMap',
     style: 'mapbox://styles/mapbox/dark-v11',
-    center: [-103.5917, 40.6699],
+    center: [78.9629, 20.5937],
     zoom: 3
 });
 
